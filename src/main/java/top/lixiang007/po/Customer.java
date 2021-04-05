@@ -1,5 +1,7 @@
 package top.lixiang007.po;
 
+import java.util.List;
+
 /**
  * 客户持久化类
  */
@@ -8,6 +10,16 @@ public class Customer {
     private String username; // 客户名称
     private String jobs;      // 职业
     private String phone;     // 电话
+
+    public List<Orders> getOrdersList() {
+        return ordersList;
+    }
+
+    public void setOrdersList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
+    }
+
+    private List<Orders> ordersList;
     public Integer getId() {
         return id;
     }

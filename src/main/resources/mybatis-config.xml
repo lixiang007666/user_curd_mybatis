@@ -2,6 +2,11 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <properties resource="db.properties" />
+    <typeAliases>
+        <typeAlias alias="customer" type="top.lixiang007.po.Customer" />
+        <typeAlias alias="Orders" type="top.lixiang007.po.Orders" />
+    </typeAliases>
     <!--1.配置环境 ，默认的环境id为mysql-->
     <environments default="mysql">
         <!--1.2.配置id为mysql的数据库环境 -->
@@ -10,16 +15,21 @@
             <transactionManager type="JDBC" />
             <!--数据库连接池 -->
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="driver" value="${jdbc.driver}" />
                 <property name="url"
-                          value="jdbc:mysql://localhost:3306/mybatis" />
-                <property name="username" value="root" />
-                <property name="password" value="lixiang666" />
+                          value="${jdbc.url}" />
+                <property name="username" value="${jdbc.username}" />
+                <property name="password" value="${jdbc.password}" />
             </dataSource>
         </environment>
     </environments>
     <!--2.配置Mapper的位置 -->
     <mappers>
         <mapper resource="top/lixiang007/mapper/CustomerMapper.xml" />
+        <mapper resource="top/lixiang007/mapper/UserMapper.xml" />
+        <mapper resource="top/lixiang007/mapper/OrdersMapper.xml" />
+        <!--
+        <mapper package="top.lixiang007.mapper"/>
+        -->
     </mappers>
 </configuration>

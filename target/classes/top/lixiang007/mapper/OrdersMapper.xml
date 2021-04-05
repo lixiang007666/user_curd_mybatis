@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="top.lixiang007.mapper.OrdersMapper">
+    <select id="findlx4" parameterType="Integer"
+            resultMap="orderswithcustomer">
+        select o.*,c.username
+        from t_order o,t_customer c
+        where o.customer_id=c.id
+        and o.id=#{id}
+    </select>
+    <resultMap id="orderswithcustomer" type="Orders">
+        <id property="id" column="id"/>
+        <result property="number" column="number"/>
+        <association property="customer1" javaType="customer">
+            <id property="id" column="id"/>
+            <result property="username" column="username"/>
+            <result property="jobs" column="jobs"/>
+            <result property="phone" column="phone"/>
+        </association>
+    </resultMap>
+
+</mapper>

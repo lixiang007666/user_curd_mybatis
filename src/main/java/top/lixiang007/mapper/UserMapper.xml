@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace表示命名空间 -->
+<mapper namespace="top.lixiang007.mapper.UserMapper">
+    <!--根据客户编号获取客户信息 -->
+    <select id="findUserById" parameterType="Integer"
+            resultType="top.lixiang007.po.User">
+		select * from User where id = #{id}
+	</select>
+
+
+</mapper>
